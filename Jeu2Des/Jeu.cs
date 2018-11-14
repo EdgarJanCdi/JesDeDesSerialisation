@@ -49,24 +49,9 @@ namespace Jeu2Des
             _Des[0] = new De();
             _Des[1] = new De();
 
-            string typeMajuscule = typeSauvgared.ToUpper();
-
-            if (typeMajuscule == "XML")
-            {
-                _Classement = new ClassementXml();
-                //_Classement.Load();
-            }
-            else if (typeMajuscule == "BINARY")
-            {
-                _Classement = new ClassementBinary();
-                //_Classement.Load();
-            }
-            else if (typeMajuscule == "JSON")
-            {
-                _Classement = new ClassementJson();
-                //_Classement.Load();
-            }
-
+            // Il faut recuperer le retour dans le type adapté
+            _Classement = FabriqueClassement.CreatClassement(typeSauvgared);
+            _Classement.Load();
         }
 
         /// <summary>

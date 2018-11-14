@@ -16,8 +16,8 @@ namespace Jeu2Des
             {
                 // Désérialisation en XML
                 Stream FichierXml = File.OpenRead("sauveXML.xml");
-                XmlSerializer serializXml = new XmlSerializer(typeof(ClassementXml));
-                Object objXml = serializXml.Deserialize(FichierXml);
+                XmlSerializer deserializXml = new XmlSerializer(typeof(ClassementXml));
+                Object objXml = deserializXml.Deserialize(FichierXml);
                 Console.WriteLine("Objet récupéré par désérialisation Xml " + objXml);
 
                 // On ne peut pas modifier la classe dans la class même(peut pas écrir this tout court) 

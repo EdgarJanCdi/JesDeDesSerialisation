@@ -15,14 +15,15 @@ namespace Jeu2Des
             if (File.Exists("sauveBinary.txt"))
             {
                 // Désérialisation en Binary
-                Stream fichier = File.OpenRead("sauveBinary.txt");
-                BinaryFormatter serializerBinary = new BinaryFormatter();
-                Object objBinary = serializerBinary.Deserialize(fichier);
+                // Pour désérialiser on a la méthode Deserialize de la class BinaryFormatter qui a besoin un objet Stream
+
+                Stream fichierBinary = File.OpenRead("sauveBinary.txt"); // Creation de l'objet Stream
+                BinaryFormatter deserializerBinary = new BinaryFormatter(); // Creation de l'objet BinaryFormatter pour poivoir acceder a ses méthodes
+                Object objBinary = deserializerBinary.Deserialize(fichierBinary); // Récuperation de deserialisation dans un objet type Object
 
                 //L'objet récupéré doit être casté dans sa classe pour qu'on puisse accéder à ces méthodes
-                // Je prend que l'atribut listDEntrees d'objet et je l'affect à this.listDEntrees
-                this.listDEntrees = ((Classement)objBinary).listDEntrees;
-                fichier.Close();
+                this.listDEntrees = ((Classement)objBinary).listDEntrees;// Je prend que l'atribut listDEntrees d'objet et je l'affect à this.listDEntrees
+                fichierBinary.Close();
             }
         }
 
